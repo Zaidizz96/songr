@@ -1,16 +1,23 @@
-package com.example.songr.albums;
+package com.example.songr.model;
 
-public class Album {
+import javax.persistence.*;
+
+@Entity
+@Table
+public class AlbumEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String title;
     private String artist;
     private int songCount;
     private double length;
     private String imageUrl;
 
-    public Album() {
+    public AlbumEntity() {
     }
 
-    public Album(String title, String artist, int songCount, double length, String imageUrl) {
+    public AlbumEntity(String title, String artist, int songCount, double length, String imageUrl) {
         this.title = title;
         this.artist = artist;
         this.songCount = songCount;
@@ -28,6 +35,10 @@ public class Album {
 
     public String getArtist() {
         return artist;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public void setArtist(String artist) {
@@ -56,16 +67,5 @@ public class Album {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    @Override
-    public String toString() {
-        return "Album{" +
-                "title='" + title + '\'' +
-                ", artist='" + artist + '\'' +
-                ", songCount=" + songCount +
-                ", length=" + length +
-                ", imageUrl='" + imageUrl + '\'' +
-                '}';
     }
 }

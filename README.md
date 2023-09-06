@@ -37,12 +37,15 @@ Before you begin, ensure you have the following installed:
 
 - http://localhost:8080/hello for the "Hello World" route.
 - http://localhost:8080/capitalize/{text} to convert text to uppercase.
-- http://localhost:8080/albums to view a list of three hardcoded albums.
+- http://localhost:8080/ to get all records from database , then put them in list<AlbumEntity>.
+- http://localhost:8080/addnew pass the album object to the form , allowing make new entity to save it later 
+
    
 ## Routes
 - `/hello`: Displays a basic "Hello World" message.
 - `/capitalize/{text}`: Converts the provided text to uppercase and displays it.
-- `/albums`: Displays a list of three hardcoded albums.
+- `/`: Displays a list of albums objects as a cards
+- `/save` : save the album entity to the database as a record after been filled with fields
 
 ## Project Structure
 The project structure is organized as follows:
