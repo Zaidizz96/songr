@@ -1,18 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleSplash.css">
+    <link rel="stylesheet" href="style.css">
     <title>Songs Application</title>
 </head>
 <body>
 <header>
     <nav class="navbar">
-        <h1 class="logo"><a href="albums">Click Here To View Albums</a></h1>
+        <h1 class="logo">
+            <a th:href="@{/addnew}">Click Here To Add Albums</a>
+        </h1>
     </nav>
 </header>
 
 <h1>Welcome To Our Application</h1>
+
+<div style="display:flex">
+<div th:each="album:${albumsList}" class="music-info">
+    <img th:src="${album.imageUrl}" alt="Album Cover">
+    <h2 class="title">Title: <span th:text="${album.title}"></span></h2>
+    <h2 class="artist">Artist: <span th:text="${album.artist}"></span></h2>
+    <h2 class="song-count">Song Count: <span th:text="${album.songCount}"></span></h2>
+    <h2 class="length">Length: <span th:text="${album.length}"></span></h2>
+    <a th:href="@{/deleteAlbum/{id}(id=${album.id})}">Delete</a>
+</div>
+</div>
 </body>
 </html>
