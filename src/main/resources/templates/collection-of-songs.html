@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Songs Application</title>
+</head>
+<body>
+<header>
+    <header>
+        <nav class="navbar">
+            <h1 class="logo">
+                <a href="/">Home</a>
+            </h1>
+        </nav>
+    </header>
+</header>
+
+<div class="container">
+    <div th:each="song:${songList}">
+        <div class="card">
+            <div class="card-header"><span th:text="${song.title}"/></div>
+            <div class="card-content">
+                <p>song Length: <span th:text="${song.length}"></span></p>
+                <p>Track Number <span th:text="${song.trackNumber}"></span></p>
+            </div>
+            <div class="card-footer">
+                <a th:href="@{/deleteSong/{id}(id=${song.id})}" class="button">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

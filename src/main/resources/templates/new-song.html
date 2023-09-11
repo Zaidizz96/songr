@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Songs Application</title>
+  <link rel="stylesheet" src="/static/style.css"
+        th:href="@{/style.css}" media="screen" type="text/css"></link>
+</head>
+<body>
+<header>
+  <nav class="navbar">
+    <h1 class="logo">
+      <a href="/">Home</a>
+    </h1>
+  </nav>
+</header>
+
+<h1>Add New Song</h1>
+<form action="#" th:action="@{/saveSong}" th:object="${song}" method="post">
+  <fieldset>
+    <legend>Add New Song</legend>
+    <label>Song Title</label>
+    <input type="text"  th:field ="*{title}"  />
+    </br>
+    <label>Length Of Song</label>
+    <input type="text" th:field ="*{length}"  />
+    </br>
+    <label>Track Number</label>
+    <input type="text" th:field="*{trackNumber}">
+    <input type="hidden" name="albumEntity" th:value="*{albumEntity.id}">
+    </br>
+    <input type="submit" value="add song">
+  </fieldset>
+</form>
+
+
+
+
+
+</body>
+</html>
