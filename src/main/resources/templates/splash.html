@@ -10,22 +10,32 @@
 <header>
     <nav class="navbar">
         <h1 class="logo">
-            <a th:href="@{/addnew}">Click Here To Add Albums</a>
+            <a th:href="@{/addnew}">Add Albums</a>
+            <a th:href="@{/song-collections}">All Songs</a>
         </h1>
     </nav>
 </header>
 
-<h1>Welcome To Our Application</h1>
+<div class="container">
+    <div th:each="album:${albumsList}">
+        <div class="card">
+            <div class="card-header">
+                <img th:src="${album.imageUrl}" alt="Album Cover">
+            </div>
+            <div class="card-content">
+                <p class="title">Title: <span th:text="${album.title}"></span></p>
+                <p class="artist">Artist: <span th:text="${album.artist}"></span></p>
+                <p class="song-count">Song Count: <span th:text="${album.songCount}"></span></p>
+                <p class="length">Length: <span th:text="${album.length}"></span></p>
+            </div>
+            <div class="card-footer">
+                <a th:href="@{/viewDetails/{id}(id=${album.id})}" class="button">View</a>
+                <a th:href="@{/addNew-Song/{albumId}(albumId=${album.id})}" class="button">Add Song</a>
+                <a th:href="@{/deleteAlbum/{id}(id=${album.id})}" class="button">Delete</a>
+            </div>
+        </div>
 
-<div style="display:flex">
-<div th:each="album:${albumsList}" class="music-info">
-    <img th:src="${album.imageUrl}" alt="Album Cover">
-    <h2 class="title">Title: <span th:text="${album.title}"></span></h2>
-    <h2 class="artist">Artist: <span th:text="${album.artist}"></span></h2>
-    <h2 class="song-count">Song Count: <span th:text="${album.songCount}"></span></h2>
-    <h2 class="length">Length: <span th:text="${album.length}"></span></h2>
-    <a th:href="@{/deleteAlbum/{id}(id=${album.id})}">Delete</a>
-</div>
+    </div>
 </div>
 </body>
 </html>

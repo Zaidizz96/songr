@@ -1,22 +1,4 @@
 
-
-.music-info {
-
-    border: 2px solid #333;
-    padding: 20px;
-    text-align: center;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-}
-
-
-.music-info img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-}
-
 .title {
     font-size: 24px;
     margin: 0;
@@ -33,11 +15,9 @@
     color: #555;
     margin: 5px 0;
 }
-/* Reset some default styles */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+.container {
+    display: flex;
+    margin: 32px
 }
 
 /* Header styles */
@@ -58,6 +38,9 @@ header {
 
 .logo {
     font-size: 24px;
+    a + a {
+      margin-left: 10px; /* Adjust the value as needed for the desired spacing */
+    }
 }
 
 .nav-links {
@@ -117,3 +100,126 @@ h1 {
     margin-top: 20px;
 }
 
+/* Card Container */
+.card {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 20px;
+}
+
+/* Card Header */
+.card-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Card Content */
+.card-content {
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+/* Card Footer (Optional) */
+.card-footer {
+  margin-top: 10px;
+  color: #555;
+}
+
+/* Card Link (Optional) */
+.card-link {
+  text-decoration: none;
+  color: #007BFF;
+}
+
+/* Hover effect (Optional) */
+.card:hover {
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Basic button styles */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  background-color: #007BFF; /* Change this to your desired button color */
+  color: #fff; /* Text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.button:hover {
+  background-color: #0056b3; /* Change this to the hover color you prefer */
+}
+
+/* Reset default margin and padding */
+body, h1, p, ol {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the album-details container */
+.album-details {
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Style the album cover image */
+.album-details img {
+    max-width: 200px;
+    height: auto;
+    margin-right: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style the album title */
+.album-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Style the artist name */
+.artist {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+
+/* Style the tracklist */
+.tracklist {
+    margin: 20px;
+}
+
+/* Style the tracklist title */
+.tracklist h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style the tracklist items */
+.tracklist ol {
+    list-style: decimal;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+/* Style the individual track items */
+.tracklist li {
+    margin-left: 20px;
+}

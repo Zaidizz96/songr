@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" src="/static/style.css"
+          th:href="@{/style.css}" media="screen" type="text/css"></link>
+    <title>Album Details</title>
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <h1 class="logo">
+            <a href="/">Home</a>
+        </h1>
+    </nav>
+</header>
+<div class="container">
+    <div th:object="${album}">
+        <div class="album-details">
+            <img th:src="*{imageUrl}" alt="Album Cover"/>
+            <div class="album-info">
+                <h1 class="album-title"><span th:text="*{title}"/></h1>
+                <p class="artist"><span th:text="*{artist}"/></p>
+                <p class="artist"><span th:text="*{songCount}"/></p>
+                <p class="artist"><span th:text="*{length}"/></p>
+            </div>
+        </div>
+
+        <div class="tracklist">
+            <ol th:each="song:${album.songs}">
+                <li><span th:text="${song.title}"></span></li>
+            </ol>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
