@@ -39,6 +39,9 @@ Before you begin, ensure you have the following installed:
 - http://localhost:8080/capitalize/{text} to convert text to uppercase.
 - http://localhost:8080/ to get all records from database , then put them in list<AlbumEntity>.
 - http://localhost:8080/addnew pass the album object to the form , allowing make new entity to save it later 
+- http://localhost:8080/song-collections" to get all songs records from database and render them in this page
+- http://localhost:8080/addNew-Song/{albumId} pass the song entity to the form , allowing make new entity to save it later
+
 
    
 ## Routes
@@ -46,6 +49,8 @@ Before you begin, ensure you have the following installed:
 - `/capitalize/{text}`: Converts the provided text to uppercase and displays it.
 - `/`: Displays a list of albums objects as a cards
 - `/save` : save the album entity to the database as a record after been filled with fields
+- `/saveSong` : save the song entity to the database as a record after been filled with fields
+- `/deleteSong/{id}` : delete song record from database 
 
 ## Project Structure
 The project structure is organized as follows:
@@ -53,7 +58,7 @@ The project structure is organized as follows:
 - `src/main/java/com/example/songr`: Java source code.
 - `SongrApplication.java`: Entry point of the application.
 - `controllers/`: Contains controller classes.
-- `models/`: Contains the Album class representing album data.
+- `models/`: Contains the Album class representing album data , and song class for songs data
 - src/main/resources/templates/: Thymeleaf templates.
 - src/main/resources/static/css/: CSS stylesheets.
 
@@ -65,3 +70,11 @@ The Album class represents an album's information and has the following attribut
 - `songCount`: The number of songs in the album.
 - `length`: The length of the album in seconds.
 - `imageUrl`: A link to the album's cover art.
+
+## Song Class 
+The Song class represents a Song's information and has the following attributes:
+
+- `title` : the title of the song 
+- `length` : length of the song 
+- `trackNumber`: number of the track 
+

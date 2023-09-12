@@ -1,39 +1,50 @@
 package com.example.songr;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import static org.junit.jupiter.api.Assertions.*;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import static org.hamcrest.Matchers.containsString;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
+@AutoConfigureMockMvc
 class SongrApplicationTests {
 
-	@Test
-	void testAlbumConstructor(){
-//		Album album = new Album("songTitle" , "songArtist" , 7 , 2400 , "urlExample.png");
-//			String actualArtist = album.getArtist();
-//			String actualTitle = album.getTitle();
-//			int actualCount = album.getSongCount();
-//			double actualLength = album.getLength();
-//			String actualUrl = album.getImageUrl();
-//		assertEquals(actualTitle , "songTitle");
-//		assertEquals(actualArtist , "songArtist");
-//		assertEquals(actualCount , 7);
-//		assertEquals(actualLength , 2400);
-//		assertEquals(actualUrl , "urlExample.png");
-	}
-	@Test
-	void testSetterMethods(){
-//		Album album = new Album();
-//		album.setTitle("SongTitle");
-//		album.setArtist("SongArtist");
-//		album.setSongCount(6);
-//		album.setLength(3000);
-//
-//		String actual = album.toString();
-//		String expected = "Album{title='SongTitle', artist='SongArtist', songCount=6, length=3000.0, imageUrl='null'}";
-//		assertEquals(actual , expected);
+    @Autowired
+    MockMvc mockMvc;
 
+    @Test
+    public void test_HelloWorld_Route_index_page() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/hello"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.content().string(containsString("<h1>Hello World</h1>")));
+    }
 
-	}
+    @Test
+    public void test_Album_Post_Creation() throws Exception {
+        mockMvc.perform(
+                        post("/save")
+                                .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+                                .param("title", "alf layla wa layla")
+                                .param("artist", "om kolthoum")
+                                .param("songCount", String.valueOf(14))
+                                .param("length", String.valueOf(3))
+                                .param("imageUrl", "https://i.ytimg.com/vi/ul4z6sLnXYY/maxresdefault.jpg")
+
+                )
+                .andExpect(redirectedUrl("/"))
+                .andExpect(status().isFound());
+    }
+
 
 }
