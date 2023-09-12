@@ -20,7 +20,7 @@
     <div th:each="album:${albumsList}">
         <div class="card">
             <div class="card-header">
-                <img th:src="${album.imageUrl}" alt="Album Cover">
+                <img th:src="${album.imageUrl}" alt="Album Cover" style="width : 100% ; height :100%">
             </div>
             <div class="card-content">
                 <p class="title">Title: <span th:text="${album.title}"></span></p>
